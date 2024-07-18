@@ -1,11 +1,11 @@
 import React from 'react'
-import { NewNoteProps } from './NewNoteProps'
+import { EditNoteProps } from './EditNoteProps'
 import { NoteForm } from './NoteForm'
 
-export const NewNote: React.FC<NewNoteProps> = ({ onSubmit, onAddTag, availableTags }: NewNoteProps) => {
+export const EditNote: React.FC<EditNoteProps> = ({ onSubmit, onAddTag, availableTags }: EditNoteProps) => {
     return (
         <>
-            <h1 className="mb-4">New Note</h1>
+            <h1 className="mb-4">Edit Note</h1>
             <NoteForm 
             onSubmit={onSubmit}
             onAddTag={onAddTag}
