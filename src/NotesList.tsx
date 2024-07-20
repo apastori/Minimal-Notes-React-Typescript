@@ -1,22 +1,22 @@
-import React, { useMemo, useState } from "react"
-import { NoteListProps } from "./NoteListProps"
-import { Row, Col, Stack, Button, Form } from "react-bootstrap"
-import { Link } from "react-router-dom"
-import ReactSelect from "react-select"
-import { Tag } from "./TagType"
-import { NoteCard } from "./NoteCard"
-import { Note } from "./Note"
-import { Note as NoteT } from "./NoteType"
-import { EditTagsModal } from "./EditTagsModal"
+import React, { useMemo, useState } from 'react'
+import { NoteListProps } from './NoteListProps'
+import { Row, Col, Stack, Button, Form } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import ReactSelect from 'react-select'
+import { Tag } from './TagType'
+import { NoteCard } from './NoteCard'
+import { Note } from './Note'
+import { Note as NoteT } from './NoteType'
+import { EditTagsModal } from './EditTagsModal'
 
 export const NoteList: React.FC<NoteListProps> = ({ availableTags, notes, onUpdateTag, onDeleteTag }: NoteListProps) => {
     const [selectedTags, setSelectedTags] = useState<Tag[]>([])
-    const [title, setTitle] = useState<string>("")
+    const [title, setTitle] = useState<string>('')
     const [editTagsModalIsOpen, setEditTagsModalIsOpen] = useState<boolean>(false)
     const filteredNotes: Note[] = useMemo(() => {
         return notes.filter((note: NoteT): boolean => {
             return (
-                title === "" || 
+                title === '' || 
                 note.title.toLowerCase().includes(title.toLowerCase())
             ) &&
             (

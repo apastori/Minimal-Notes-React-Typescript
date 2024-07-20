@@ -1,11 +1,11 @@
-import React from "react"
-import type { Note } from "./NoteType"
-import { useNote } from "./useNote"
-import { NoteProps } from "./NoteProps"
+import React from 'react'
+import type { Note } from './NoteType'
+import { useNote } from './useNote'
+import { NoteProps } from './NoteProps'
 import { Row, Col, Stack, Badge, Button } from 'react-bootstrap'
 import { Link, NavigateFunction, useNavigate } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
-import { Tag } from "./TagType"
+import { Tag } from './TagType'
 
 const Note: React.FC<NoteProps> = ({ onDelete }: NoteProps) => {
     const note: Note = useNote();

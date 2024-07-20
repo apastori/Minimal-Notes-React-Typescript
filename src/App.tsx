@@ -1,9 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Navigate, Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import React, { useMemo } from 'react'
 import { AppProps } from './AppProps'
-import { NewNote } from "./NewNote"
+import { NewNote } from './NewNote'
 import { RawNote } from './RawNoteType'
 import { Tag } from './TagType'
 import { useLocalStorage } from './useLocalStorageHook'
@@ -15,8 +15,8 @@ import { Note } from './Note'
 import { EditNote } from './EditNote'
 
 const App: React.FC<AppProps> = () => {
-  const [notes, setNotes] = useLocalStorage<RawNote[]>("NOTES", [])
-  const [tags, setTags] = useLocalStorage<Tag[]>("TAGS", [])
+  const [notes, setNotes] = useLocalStorage<RawNote[]>('NOTES', [])
+  const [tags, setTags] = useLocalStorage<Tag[]>('TAGS', [])
 
   const notesWithTags = useMemo(() => {
     return notes.map(note => {

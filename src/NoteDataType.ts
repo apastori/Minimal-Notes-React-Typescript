@@ -1,4 +1,4 @@
-import type { Tag } from "./TagType"
+import type { Tag } from './TagType'
 
 export type NoteData = {
     title: string,

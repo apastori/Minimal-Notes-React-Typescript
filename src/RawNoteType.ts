@@ -1,4 +1,4 @@
-import { RawNoteData } from "./RawNoteData"
+import { RawNoteData } from './RawNoteData'
 
 export type RawNote = {
     id: string

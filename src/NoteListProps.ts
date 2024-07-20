@@ -1,5 +1,5 @@
-import { Note } from "./NoteType";
-import { Tag } from "./TagType";
+import { Note } from './NoteType';
+import { Tag } from './TagType';
 
 export interface NoteListProps {
     notes: Note[]

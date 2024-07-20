@@ -1,5 +1,5 @@
-import { NoteData } from "./NoteDataType"
-import { Tag } from "./TagType"
+import { NoteData } from './NoteDataType'
+import { Tag } from './TagType'
 
 interface NewNoteProps extends Partial<NoteData> {
     onSubmit: (data: NoteData) => void

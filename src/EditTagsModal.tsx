@@ -1,6 +1,6 @@
-import React from "react"
-import { EditTagsModalProps } from "./EditTagsModalProps"
-import { Modal, Stack, Row, Col, Button, Form } from "react-bootstrap"
+import React from 'react'
+import { EditTagsModalProps } from './EditTagsModalProps'
+import { Modal, Stack, Row, Col, Button, Form } from 'react-bootstrap'
 
 export const EditTagsModal: React.FC<EditTagsModalProps> = ({ show, availableTags, handleClose, onUpdateTag, onDeleteTag }: EditTagsModalProps) => {
     return (

@@ -1,10 +1,10 @@
-import React, { FormEvent, useRef, useState } from "react"
-import type { NewNoteProps } from "./NoteFormProps"
-import { Form, Stack, Row, Col, Button } from "react-bootstrap"
-import  CreatableReactSelect  from "react-select/creatable"
-import { Link } from "react-router-dom"
+import React, { FormEvent, useRef, useState } from 'react'
+import type { NewNoteProps } from './NoteFormProps'
+import { Form, Stack, Row, Col, Button } from 'react-bootstrap'
+import  CreatableReactSelect  from 'react-select/creatable'
+import { Link } from 'react-router-dom'
 import { Tag } from './TagType'
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from 'react-router-dom'
 import { v4 as uuidV4 } from 'uuid';
 
 const NoteForm: React.FC<NewNoteProps> = ({ onSubmit, onAddTag, availableTags, 
