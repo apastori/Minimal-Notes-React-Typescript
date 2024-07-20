@@ -8,8 +8,8 @@ import ReactMarkdown from 'react-markdown'
 import { Tag } from './TagType'
 
 const Note: React.FC<NoteProps> = ({ onDelete }: NoteProps) => {
-    const note: Note = useNote();
-    const Navigate: NavigateFunction = useNavigate();
+    const note: Note = useNote()
+    const Navigate: NavigateFunction = useNavigate()
     return (
         <>
             <Row className='align-items-center mb-4'>

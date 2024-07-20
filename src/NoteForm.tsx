@@ -5,16 +5,16 @@ import  CreatableReactSelect  from 'react-select/creatable'
 import { Link } from 'react-router-dom'
 import { Tag } from './TagType'
 import { useNavigate } from 'react-router-dom'
-import { v4 as uuidV4 } from 'uuid';
+import { v4 as uuidV4 } from 'uuid'
 
 const NoteForm: React.FC<NewNoteProps> = ({ onSubmit, onAddTag, availableTags, 
    title = '', markdown = '', tags = [] }: NewNoteProps) => {
    const titleRef: React.RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null)
    const markdownRef: React.RefObject<HTMLTextAreaElement> = useRef<HTMLTextAreaElement>(null)
-   const [selectedTags, setSelectedTags] = useState<Tag[]>(tags);
-   const navigate = useNavigate();
+   const [selectedTags, setSelectedTags] = useState<Tag[]>(tags)
+   const navigate = useNavigate()
    function handleSubmit(e: FormEvent): void {
-      e.preventDefault();
+      e.preventDefault()
       onSubmit({
          title: titleRef.current!.value,
          markdown: markdownRef.current!.value,

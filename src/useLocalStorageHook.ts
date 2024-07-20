@@ -6,7 +6,7 @@ function useLocalStorage<T>(key: string,
             const jsonValue: string | null = localStorage.getItem(key)
             if (jsonValue == null) {
                 if (typeof initialValue === 'function') {
-                    return (initialValue as () => T)();
+                    return (initialValue as () => T)()
                 } else {
                     return initialValue
                 } 

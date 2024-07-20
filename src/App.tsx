@@ -8,7 +8,7 @@ import { RawNote } from './RawNoteType'
 import { Tag } from './TagType'
 import { useLocalStorage } from './useLocalStorageHook'
 import { NoteData } from './NoteDataType'
-import { v4 as uuidV4 } from 'uuid';
+import { v4 as uuidV4 } from 'uuid'
 import { NoteList } from './NotesList'
 import { NoteLayout } from './NoteLayout'
 import { Note } from './Note'

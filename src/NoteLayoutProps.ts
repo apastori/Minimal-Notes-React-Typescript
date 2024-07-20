@@ -1,4 +1,4 @@
-import { Note } from './NoteType';
+import { Note } from './NoteType'
 
 export interface NoteLayoutProps {
     notes: Note[]

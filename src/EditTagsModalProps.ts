@@ -1,4 +1,4 @@
-import { Tag } from './TagType';
+import { Tag } from './TagType'
 
 export interface EditTagsModalProps {
     show: boolean,

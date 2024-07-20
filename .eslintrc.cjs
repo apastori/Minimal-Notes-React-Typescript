@@ -22,6 +22,7 @@ module.exports = {
       {
         "allowTemplateLiterals": true
       }
-    ]
+    ],
+    "@typescript-eslint/semi": ["error", "never"]
   }
 }
