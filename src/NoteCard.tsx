@@ -14,7 +14,7 @@ const NoteCard: React.FC<NoteCardProps> = ({ id, title, tags }: NoteCardProps) =
             text-reset 
             text-decoration-none
             ${styles.card}
-            `}
+        `}
         >
             <Card.Body>
                 <Stack 

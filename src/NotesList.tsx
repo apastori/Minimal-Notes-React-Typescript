@@ -21,7 +21,7 @@ export const NoteList: React.FC<NoteListProps> = ({ availableTags, notes, onUpda
             ) &&
             (
                 selectedTags.length === 0 ||
-                selectedTags.every((tag) => {
+                selectedTags.every((tag: Tag) => {
                     note.tags.some((noteTag: Tag): boolean => {
                         return noteTag.id === tag.id
                     })
