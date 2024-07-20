@@ -7,10 +7,11 @@ import { Tag } from './TagType'
 import { useNavigate } from "react-router-dom"
 import { v4 as uuidV4 } from 'uuid';
 
-const NoteForm: React.FC<NewNoteProps> = ({ onSubmit, onAddTag, availableTags }: NewNoteProps) => {
+const NoteForm: React.FC<NewNoteProps> = ({ onSubmit, onAddTag, availableTags, 
+   title = '', markdown = '', tags = [] }: NewNoteProps) => {
    const titleRef: React.RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null)
    const markdownRef: React.RefObject<HTMLTextAreaElement> = useRef<HTMLTextAreaElement>(null)
-   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
+   const [selectedTags, setSelectedTags] = useState<Tag[]>(tags);
    const navigate = useNavigate();
    function handleSubmit(e: FormEvent): void {
       e.preventDefault();
@@ -31,7 +32,7 @@ const NoteForm: React.FC<NewNoteProps> = ({ onSubmit, onAddTag, availableTags }:
                <Col>
                   <Form.Group controlId="title">
                      <Form.Label>Title</Form.Label>
-                     <Form.Control ref={titleRef} required />
+                     <Form.Control ref={titleRef} required defaultValue={title} />
                   </Form.Group>
                </Col>
                <Col>
@@ -66,7 +67,7 @@ const NoteForm: React.FC<NewNoteProps> = ({ onSubmit, onAddTag, availableTags }:
             </Row>
             <Form.Group controlId="markdown">
                <Form.Label>Body</Form.Label>
-               <Form.Control required as="textarea" rows={15} ref={markdownRef} />
+               <Form.Control required as="textarea" rows={15} ref={markdownRef} defaultValue={markdown} />
             </Form.Group>
             <Stack direction="horizontal" gap={2} className="justify-content-end">
                <Button type="submit" variant="primary">Save</Button>

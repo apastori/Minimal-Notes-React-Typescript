@@ -58,6 +58,14 @@ const App: React.FC<AppProps> = () => {
     })  
   }
 
+  function onDeleteNote(id: string): void {
+    setNotes(prevNotes => {
+      return prevNotes.filter(note => {
+        return note.id !== id
+      })  
+    })
+  }
+
   function addTag(tag: Tag): void {
     setTags(prevTags => {
       return [
@@ -67,10 +75,40 @@ const App: React.FC<AppProps> = () => {
     })
   }
 
+  function updateTag(id: string, label: string) {
+    setTags(prevTags => {
+      return prevTags.map(tag => {
+        if (tag.id === id) {
+          return {
+            ...tag,
+            label
+          }
+        } else {
+          return tag
+        }
+      })
+    })
+  }
+
+  function deleteTag(id: string): void {
+    setTags(prevTags => {
+      return prevTags.filter(tag => {
+        return tag.id !== id
+      })
+    })
+  }
+
   return (
     <Container className='my-4'>
         <Routes>
-        <Route path='/' element={<NoteList availableTags={tags} notes={notesWithTags}/>} />
+        <Route path='/' element={
+          <NoteList 
+          availableTags={tags} 
+          notes={notesWithTags}
+          onUpdateTag={updateTag}
+          onDeleteTag={deleteTag}
+          />} 
+        />
         <Route path='/new' element={
           <NewNote onSubmit={onCreateNote} 
           onAddTag={addTag} 
@@ -78,7 +116,7 @@ const App: React.FC<AppProps> = () => {
         />} />
         <Route path='/:id' element={<NoteLayout notes={notesWithTags}/>
         }>
-          <Route index element={<Note />}  />
+          <Route index element={<Note onDelete={onDeleteNote} />}  />
           <Route path='edit' element={
             <EditNote 
             onSubmit={onUpdateNote} 

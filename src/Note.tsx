@@ -3,11 +3,13 @@ import type { Note } from "./NoteType"
 import { useNote } from "./useNote"
 import { NoteProps } from "./NoteProps"
 import { Row, Col, Stack, Badge, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, NavigateFunction, useNavigate } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
+import { Tag } from "./TagType"
 
-const Note: React.FC<NoteProps> = () => {
+const Note: React.FC<NoteProps> = ({ onDelete }: NoteProps) => {
     const note: Note = useNote();
+    const Navigate: NavigateFunction = useNavigate();
     return (
         <>
             <Row className='align-items-center mb-4'>
@@ -20,7 +22,7 @@ const Note: React.FC<NoteProps> = () => {
                         className='justify-content-center flex-wrap'
                         >
                             {
-                                note.tags.map((tag) => {
+                                note.tags.map((tag: Tag) => {
                                     return (
                                         <Badge
                                         className="text-truncate"
@@ -39,7 +41,10 @@ const Note: React.FC<NoteProps> = () => {
                         <Link to={`/${note.id}/edit`}>
                             <Button variant='primary'>Edit</Button>
                         </Link>
-                        <Button variant="outline-danger">Delete</Button>
+                        <Button onClick={() => {
+                            onDelete(note.id)
+                            Navigate('..')
+                        }} variant="outline-danger">Delete</Button>
                         <Link to='/'>
                             <Button variant='outline-secondary'>Back</Button>
                         </Link>

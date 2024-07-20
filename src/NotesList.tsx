@@ -5,12 +5,16 @@ import { Link } from "react-router-dom"
 import ReactSelect from "react-select"
 import { Tag } from "./TagType"
 import { NoteCard } from "./NoteCard"
+import { Note } from "./Note"
+import { Note as NoteT } from "./NoteType"
+import { EditTagsModal } from "./EditTagsModal"
 
-export const NoteList: React.FC<NoteListProps> = ({ availableTags, notes }: NoteListProps) => {
+export const NoteList: React.FC<NoteListProps> = ({ availableTags, notes, onUpdateTag, onDeleteTag }: NoteListProps) => {
     const [selectedTags, setSelectedTags] = useState<Tag[]>([])
     const [title, setTitle] = useState<string>("")
-    const filteredNotes = useMemo(() => {
-        return notes.filter((note): boolean => {
+    const [editTagsModalIsOpen, setEditTagsModalIsOpen] = useState<boolean>(false)
+    const filteredNotes: Note[] = useMemo(() => {
+        return notes.filter((note: NoteT): boolean => {
             return (
                 title === "" || 
                 note.title.toLowerCase().includes(title.toLowerCase())
@@ -18,8 +22,8 @@ export const NoteList: React.FC<NoteListProps> = ({ availableTags, notes }: Note
             (
                 selectedTags.length === 0 ||
                 selectedTags.every((tag) => {
-                    note.tags.some((noteTag) => {
-                        noteTag.id === tag.id
+                    note.tags.some((noteTag: Tag): boolean => {
+                        return noteTag.id === tag.id
                     })
                 })
             )
@@ -41,7 +45,10 @@ export const NoteList: React.FC<NoteListProps> = ({ availableTags, notes }: Note
                                 Create
                             </Button>
                         </Link>
-                        <Button variant='outline-secondary'>
+                        <Button
+                        onClick={() => setEditTagsModalIsOpen(true)}
+                        variant='outline-secondary'
+                        >
                             Edit Tags
                         </Button>
                     </Stack>
@@ -57,7 +64,7 @@ export const NoteList: React.FC<NoteListProps> = ({ availableTags, notes }: Note
                             <Form.Control 
                             type='text' 
                             value={title}
-                            onChange={e => {
+                            onChange={(e) => {
                                 setTitle(e.target.value)
                             }}
                             />
@@ -67,10 +74,10 @@ export const NoteList: React.FC<NoteListProps> = ({ availableTags, notes }: Note
                         <Form.Group controlId="tags">
                             <Form.Label>Tags</Form.Label>
                             <ReactSelect 
-                            value={selectedTags.map(tag => {
+                            value={selectedTags.map((tag: Tag) => {
                             return  {label: tag.label, value: tag.id}
                             })}
-                            options={availableTags.map((tag) => {
+                            options={availableTags.map((tag: Tag) => {
                             return {
                                 label: tag.label,
                                 value: tag.id
@@ -94,7 +101,7 @@ export const NoteList: React.FC<NoteListProps> = ({ availableTags, notes }: Note
             xl={4} 
             className="g-3" >
                 {
-                    filteredNotes.map((note) => {
+                    filteredNotes.map((note: Note) => {
                         return (
                             <Col key={note.id}>
                                 <NoteCard 
@@ -107,6 +114,13 @@ export const NoteList: React.FC<NoteListProps> = ({ availableTags, notes }: Note
                     })
                 }        
             </Row>
+            <EditTagsModal 
+            show={editTagsModalIsOpen}
+            handleClose={() => setEditTagsModalIsOpen}
+            availableTags={availableTags}
+            onUpdateTag={onUpdateTag}
+            onDeleteTag={onDeleteTag}
+            />
         </>
     )
 }
