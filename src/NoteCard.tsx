@@ -21,7 +21,7 @@ const NoteCard: React.FC<NoteCardProps> = ({ id, title, tags }: NoteCardProps) =
                 gap={2}
                 className='align-items-center justify-content-center h-100'
                 >
-                    <span className='fs-5'></span>
+                    <span className='fs-5'>{title}</span>
                     {
                         tags.length > 0 &&
                         (
